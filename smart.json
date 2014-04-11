@@ -1,0 +1,10 @@
+{
+  "packages": {
+    "router": {},
+    "roles": {},
+    "accounts-ui-bootstrap-3": {},
+    "jquery-ui-bootstrap": {},
+    "bootstrap-3": {},
+    "cfs-file": {}
+  }
+}

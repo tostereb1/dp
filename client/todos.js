@@ -40,6 +40,9 @@ Deps.autorun(function () {
 });
 
 
+
+
+
 ////////// Helpers for in-place editing //////////
 
 // Returns an event map that handles the "escape" and "return" keys and
@@ -75,16 +78,28 @@ var activateInput = function (input) {
   input.select();
 };
 ///////logged////////
-
-Template._loginButtonsLoggedInDropdown.events({
+/*
+Template.loginActions.events({
   'click #login-buttons-edit-profile': function(event) {
     event.stopPropagation();
     Template._loginButtons.toggleDropdown();
     Router.go('profileEdit');
   }
 });
+*/
+// Template._loginButtonsLoggedInDropdown.events({
+//   'click #login-buttons-edit-profile': function(event) {
+//     event.stopPropagation();
+//     Template._loginButtons.toggleDropdown();
+//     Router.go('profileEdit');
+//   }
+// });
+
 
 ////////// Lists //////////
+
+
+
 
 Template.lists.loading = function () {
   return !listsHandle.ready();
@@ -95,6 +110,8 @@ Template.lists.lists = function () {
 };
 
 Template.lists.events({
+
+
   'mousedown .list': function (evt) { // select list
     Router.setList(this._id);
   },
@@ -206,6 +223,20 @@ Template.todo_item.adding_tag = function () {
 };
 
 Template.todo_item.events({
+  
+  'contextmenu' : function() {
+    $('#task').draggable();
+
+    if (event.preventDefault) {
+      event.preventDefault();
+    }else{
+      event.returnValue= false;
+    return false;
+    };
+
+  },
+
+
   'click .check': function () {
     Todos.update(this._id, {$set: {done: !this.done}});
   },
@@ -295,6 +326,9 @@ Template.tag_filter.selected = function () {
 };
 
 Template.tag_filter.events({
+  'click' : function (event) { $('.dropdown-toggle').dropdown(); 
+event.stopPropagation(); }, 
+
   'mousedown .tag': function () {
     if (Session.equals('tag_filter', this.tag))
       Session.set('tag_filter', null);
@@ -326,3 +360,41 @@ Router = new TodosRouter;
 Meteor.startup(function () {
   Backbone.history.start({pushState: true});
 });
+
+
+// //////// roles //////
+
+// var users = [
+//       {name:"Normal User",email:"normal@example.com",roles:[]},
+//       {name:"View-Secrets User",email:"view@example.com",roles:['view-secrets']},
+//       {name:"Manage-Users User",email:"manage@example.com",roles:['manage-users']},
+//       {name:"Admin User",email:"admin@example.com",roles:['admin']}
+//     ];
+
+//   _.each(users, function (user) {
+//     var id;
+
+//     id = Accounts.createUser({
+//       email: user.email,
+//       password: "apple1",
+//       profile: { name: user.name }
+//     });
+
+//     if (user.roles.length > 0) {
+//       // Need _id of existing user record so this call must come 
+//       // after `Accounts.createUser` or `Accounts.onCreate`
+//       Roles.addUsersToRoles(id, user.roles);
+//     }
+
+//   });
+
+
+// Accounts.validateNewUser(function (user) {
+//     var loggedInUser = Meteor.user();
+
+//     if (Roles.userIsInRole(loggedInUser, ['admin','manage-users'])) {
+//       return true;
+//     }
+
+//     throw new Meteor.Error(403, "Not authorized to create new users");
+//   });

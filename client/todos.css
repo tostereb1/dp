@@ -1,6 +1,5 @@
 * {
-    padding: 0;
-    margin: 0;
+   
 }
 
 ul {
@@ -8,13 +7,14 @@ ul {
 }
 
 html, body {
-    height: 100%;
+    width:100%;
+    height: auto;
 }
 
 body {
     font-size: 16px;
     line-height: 1.5;
-    background: #eeeeee;
+    background: #fff;
     color: #333333;
 }
 
@@ -38,45 +38,24 @@ h3 {
     text-align: center;
 }
 
-#top-tag-filter, #main-pane, #side-pane, #bottom-pane {
-    position: absolute;
+.container-fluid {
+    
+    height: auto;
+    border-radius:10px ;
+    padding: 2%;
+    margin: 5%;
+    position: relative;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    overflow: hidden;
+    background: #FFF5EE;
 }
 
-#top-tag-filter {
-    left: 200px;
-    height: 44px;
-    bottom: auto;
-    background: #ddd;
-    border-bottom: 1px solid #999;
-}
 
-#help {
-    padding: 8px;
-}
-
-#main-pane {
-    top: 45px;
-    bottom: 0;
-    left: 220px;
-    overflow: auto;
-}
-
-#side-pane {
-    width: 200px;
-    right: auto;
-    overflow: auto;
-    background: #eee;
-    border-right: 1px solid #999;
-    background: #ddd;
-}
-
+/*начало тэги*/
 .tag {
-    cursor: pointer;
+
     float: left;
     margin: 5px;
     padding: 2px 7px;
@@ -98,35 +77,49 @@ h3 {
     position: relative;
 }
 
-#tag-filter .label {
-    float: left;
-    margin-top: 9px;
-    margin-left: 12px;
-    margin-right: 8px;
-}
+
+
 
 #tag-filter .tag {
     margin-top: 10px;
     border: 1px solid #777;
 }
-
+/*тэг выделенный*/
 #tag-filter .selected {
-    background: #69d;
+    background: #EEE5DE;
 }
 
+/*тэг число*/
 #tag-filter .count {
     font-weight: normal;
     padding-left: 2px;
 }
+/*конец тэгов*/
+#btn-project{
+    float: left;
+    position: absolute;
+    padding: 3px 6px;
+    margin-right: 10px;
+}
+
+#tiem{
+    height: auto;
+    float: right;
+}
+/* style для листа */
+
+#lists{
+    margin-top: 25px;
+}
 
 #lists .list {
-    padding: 3px 6px;
+    padding: 3px 6px;   
 }
 
 #lists .selected {
     padding: 2px 6px;
-    background: #9be;
-    font-weight: bold;
+    background: #EEE5DE;
+    width:100%;
 }
 
 #lists .list-name {
@@ -136,37 +129,43 @@ h3 {
 }
 
 #createList {
+    position: absolute;
     padding: 3px 6px;
-    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 #createList input {
-    width: 180px;
+    width: 100%;
 }
 
+/*конец лист*/
+
+
 #new-todo-box {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 10px;
-    margin-left: 60px;
+    margin-left: 20px;
     margin-right: 20px;
     font-size: 160%;
     position: relative;
-    height: 40px;
+    height: auto;
 }
 
 #new-todo {
-   position: absolute;
+   font-size: 12px;
+   margin-top: 0px;
+   margin-bottom: 10px;
    width: 100%;
 }
 
-#items-view {
-    margin-top: 5px;
-    margin-left: 5px;
+#item-list {
+  height: auto;
+  overflow: auto;
 }
-
+  
 #item-list .todo {
     display: block;
-    height: 50px;
+    height: 100%;
     position: relative;
     overflow: hidden;
     border-top: 1px solid #ccc;
@@ -191,7 +190,7 @@ h3 {
 }
 
 #todo-input {
-    width: 300px;
+    width: 200px;
     position: relative;
     top: -3px;
 }

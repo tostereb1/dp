@@ -4,55 +4,70 @@
 
 <body>
 
-  <div id="top-tag-filter">
-    {{> tag_filter}}
-  </div>
 
-  <div id="main-pane">
-    {{> todos}}
-  </div>
 
-  <div id="side-pane">
-    
-{{> loginButtons }}
 
-    {{> lists}}
+  <div class="container-fluid">
+      {{> loginButtons }} 
+      {{#if currentUser}}
+    <div class="row-fluid">
+      <div class="navbar">
+         {{> tag_filter}}
+      </div>
+       
+       {{> todos}}
+    </div>
+     {{/if}}
   </div>
+<!--
+    {{/if}} 
+-->
 </body>
-
-<template name="_loginButtonsAdditionalLoggedInDropdownActions">
-  <button class="btn btn-default btn-block" id="login-buttons-edit-profile">Edit profile</button>
+<!--
+<template name="loginActions">
+  <button id="login-buttons-edit-profile">{{> loginButtons }}</button>
 </template>
-
-
+-->
 
 
 <template name="lists">
-  <h3>Todo Lists</h3>
+<div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    Projects
+    <span class="caret"></span>
+  </a>
+  
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+   
+    <h3>Project Lists</h3>
   {{#if loading}}
-    <div id="lists">Loading...</div>
+    <div class="span2" id="lists">Loading...</div>
   {{else}}
-    <div id="lists">
+    <div class="nav nav-pills nav-stacked" id="lists">
       {{#each lists}}
-        <div class="list {{selected}}">
+       <li class="list {{selected}}">
           {{#if editing}}
             <div class="edit">
               <input class="list-name-input" id="list-name-input" type="text" value="{{name}}" />
             </div>
           {{else}}
-            <div class="display">
+            <div class="nav nav-pills nav-stacked">
               <a class="list-name {{name_class}}" href="/{{_id}}">
                 {{name}}
               </a>
             </div>
           {{/if}}
-        </div>
+        </li>
       {{/each}}
     </div>
-    <div id="createList">
-      <input type="text" id="new-list" placeholder="New list" />
-    </div>
+    <li id="createList">
+      <input type="text" id="new-list" placeholder="New list" /> 
+    </li>
   {{/if}}
+
+  </ul>
+</div>
+
 </template>
 
 <template name="todos">
@@ -62,7 +77,7 @@
         Loading...
       {{else}}
         <div id="new-todo-box">
-          <input type="text" id="new-todo" placeholder="New item" />
+          <textarea id="new-todo" placeholder="New item"></textarea>
         </div>
         <ul id="item-list">
           {{#each todos}}
@@ -100,7 +115,7 @@
         </div>
       {{else}}
         <div class="tag addtag">
-          +tag
+          +name
         </div>
       {{/if}}
     </div>
@@ -108,12 +123,27 @@
 </template>
 
 <template name="tag_filter">
-  <div id="tag-filter" class="tag-list">
-    <div class="label">Show:</div>
-    {{#each tags}}
-      <div class="tag {{selected}}">
-        {{tag_text}} <span class="count">({{count}})</span>
-      </div>
-    {{/each}}
+
+  
+
+
+
+  <div id="tag-filter" class="navbar">
+    <div class="navbar-inner">
+      <div id="btn-project" >
+        {{> lists}}
+      </div> 
+      <div id="tiem">
+        <a class="brand" href="#">Teims: </a>
+          {{#each tags}}
+
+        <div class="tag {{selected}}">
+          {{tag_text}} <span class="count">({{count}})</span>
+        </div>
+     
+          {{/each}}
+      </div>     
+    </div>
   </div>
 </template>
+ 

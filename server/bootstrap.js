@@ -11,7 +11,8 @@ Meteor.startup(function () {
          ["Full Stack Reactivity", "Better UX", "Fun"],
          ["Embrace the Ecosystem", "Fun"],
          ["Simplicity Equals Productivity", "Simplicity", "Fun"]
-       ]
+       ],
+       user_id: '1'
       },
       {name: "Languages",
        contents: [

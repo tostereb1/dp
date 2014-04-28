@@ -1,0 +1,19 @@
+<template name="tag_filter">
+  <div id="tag-filter" class="navbar">
+    <div class="navbar-inner">
+      <div id="btn-project" >
+        {{> lists}}
+      </div> 
+      <div id="tiem">
+        <div class="brand" >Teims: </div>
+          {{#each tags}}
+
+        <a href="#" class="tag {{selected}}">
+          {{tag_text}} <span class="count">({{count}})</span>
+        </a>
+     
+          {{/each}}
+      </div>     
+    </div>
+  </div>
+</template>

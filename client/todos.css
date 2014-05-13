@@ -96,6 +96,7 @@ a, a:visited, a:active {
 
 #lists .list {
     padding: 5px 6px;   
+    width:100%;
 }
 
 #lists .selected {
@@ -130,7 +131,7 @@ a, a:visited, a:active {
     height: auto;
 }
 
-#new-task {
+#new-todo {
    font-size: 12px;
    margin-bottom: 10px;
    width :100%;

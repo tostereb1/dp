@@ -23,7 +23,7 @@ Session.setDefault('editing_itemname', null);
 // Select a list once data has arrived.
 var listsHandle = Meteor.subscribe('lists', function () {
   if (!Session.get('list_id')) {
-    var list = Lists.findOne({}, {sort: {name: 1}});
+    var list = Lists.findOne({});
     if (list)
       Router.setList(list._id);
   }
@@ -106,7 +106,7 @@ Template.lists.loading = function () {
 };
 
 Template.lists.lists = function () {
-  return Lists.find({}, {sort: {name: 1}});
+  return Lists.find({userId: Meteor.userId()});
 };
 
 Template.lists.events({
@@ -131,7 +131,7 @@ Template.lists.events(okCancelEvents(
   '#new-list',
   {
     ok: function (text, evt) {
-      var id = Lists.insert({name: text});
+      var id = Lists.insert({name: text, userId: Meteor.userId()}); // {userId: this.user}
       Router.setList(id);
       evt.target.value = "";
     }
@@ -141,7 +141,7 @@ Template.lists.events(okCancelEvents(
   '#list-name-input',
   {
     ok: function (value) {
-      Lists.update(this._id, {$set: {name: value}});
+      Lists.update(this._id, {$set: {name: value}});// {userId: this.userId}
       Session.set('editing_listname', null);
     },
     cancel: function () {

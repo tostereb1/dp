@@ -3,18 +3,16 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-       
+  <div class="container-fluid">     
   {{#if currentUser}}
-  <div class="row-fluid">
+    <div class="row-fluid">
     {{> loginButtons}}
       <div class="navbar">
         {{> tag_filter}}
       </div>
       {{> todos}}
     </div>
-  
-    {{else}}
+  {{else}}
     <p>Пожалуйста авторизуйтесь:  {{> loginButtons}}</p>
   {{/if}}
   </div>

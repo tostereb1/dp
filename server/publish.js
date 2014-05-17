@@ -4,7 +4,7 @@ Lists = new Meteor.Collection("lists");
 
 // Publish complete set of lists to all clients.
 Meteor.publish('lists', function () {
-  console.log(this.userId)
+  //console.log(this.userId)
     return Lists.find({});
 });
 

@@ -1,0 +1,19 @@
+<head>
+  <title>Task Manager</title>
+</head>
+
+<body>
+  <div class="container-fluid">     
+  {{#if currentUser}}
+    <div class="row-fluid">
+    {{> loginButtons}}
+      <div class="navbar">
+        {{> tag_filter}}
+      </div>
+      {{> todos}}
+    </div>
+  {{else}}
+    <p align="center">Пожалуйста авторизуйтесь:  {{> loginButtons}}</p>
+  {{/if}}
+  </div>
+</body>
